@@ -220,125 +220,109 @@ body {
     display: block;
 }
 
-/* Eisenhower Matrix - 2x2 Grid Layout */
+/* Eisenhower Matrix - 2x2 Grid Layout like in the image */
 .eisenhower-matrix {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 2px;
-    height: calc(100vh - 130px);
-    background: var(--border-color); /* Цвет разделителей */
-    border: 2px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    height: calc(100vh - 150px);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .matrix-quadrant {
-    background: var(--bg-primary);
-    padding: 20px;
+    background: white;
+    border: 3px solid;
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
 }
 
-/* Цветные акценты для квадрантов */
+.matrix-quadrant:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Цветные границы и фоны для квадрантов - точно как на картинке */
 .matrix-quadrant.urgent-important {
     background: #fff5f5;
+    border-color: #fca5a5;
 }
 
 .matrix-quadrant.not-urgent-important {
-    background: #f0f9ff;
+    background: #f0fdf4;
+    border-color: #86efac;
 }
 
 .matrix-quadrant.urgent-not-important {
-    background: #fffbeb;
+    background: #fefce8;
+    border-color: #fde047;
 }
 
 .matrix-quadrant.not-urgent-not-important {
-    background: #f9fafb;
+    background: #f8fafc;
+    border-color: #cbd5e1;
 }
 
 .quadrant-header {
     margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid;
-}
-
-.matrix-quadrant.urgent-important .quadrant-header {
-    border-bottom-color: var(--danger);
-}
-
-.matrix-quadrant.not-urgent-important .quadrant-header {
-    border-bottom-color: var(--primary);
-}
-
-.matrix-quadrant.urgent-not-important .quadrant-header {
-    border-bottom-color: var(--warning);
-}
-
-.matrix-quadrant.not-urgent-not-important .quadrant-header {
-    border-bottom-color: var(--text-muted);
+    border-bottom: none;
 }
 
 .quadrant-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
     margin-bottom: 4px;
 }
 
-.matrix-quadrant.urgent-important .quadrant-label {
-    color: var(--danger);
-}
-
-.matrix-quadrant.not-urgent-important .quadrant-label {
-    color: var(--primary);
-}
-
-.matrix-quadrant.urgent-not-important .quadrant-label {
-    color: #b45309;
-}
-
-.matrix-quadrant.not-urgent-not-important .quadrant-label {
-    color: var(--text-muted);
-}
-
 .quadrant-header h3 {
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 8px;
 }
 
-.quadrant-help {
-    font-size: 12px;
+.quadrant-count {
+    font-size: 13px;
     color: var(--text-secondary);
-    line-height: 1.5;
     margin-bottom: 12px;
 }
 
+.quadrant-help {
+    display: none; /* Скрываем подсказки как на картинке */
+}
+
 .add-task-btn {
-    width: 32px;
-    height: 32px;
-    background: var(--primary);
-    border: none;
-    border-radius: var(--radius);
-    color: white;
-    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 2px solid var(--text-muted);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 24px;
+    font-weight: 300;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    right: 20px;
 }
 
 .add-task-btn:hover {
-    background: var(--primary-hover);
+    background: var(--bg-secondary);
+    border-color: var(--text-primary);
+    color: var(--text-primary);
     transform: scale(1.05);
 }
 
@@ -346,6 +330,13 @@ body {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 40px 20px;
 }
 
 /* Task Card - запрещаем выделение текста */

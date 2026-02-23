@@ -62,52 +62,52 @@
                     <div class="matrix-quadrant urgent-important" data-quadrant="urgent-important">
                         <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <div class="quadrant-label">A. Срочное и важное</div>
-                            <h3>Важно и срочно</h3>
-                            <div class="quadrant-help">
-                                Дела, которые не терпят отлагательства. Регулярное появление таких дел в списке — показатель плохого планирования. При идеальном планировании этот квадрат должен быть пустым.
-                            </div>
+                            <h3>Сделать</h3>
+                            <div class="quadrant-label">Срочное и важное</div>
+                            <div class="quadrant-count" id="count-urgent-important">0 задач</div>
                         </div>
-                        <div class="quadrant-content" id="quadrant-urgent-important"></div>
+                        <div class="quadrant-content" id="quadrant-urgent-important">
+                            <div class="empty-state">Задач пока нет. Нажмите + чтобы добавить.</div>
+                        </div>
                     </div>
 
                     <!-- Квадрант B: Не срочно, но Важно -->
                     <div class="matrix-quadrant not-urgent-important" data-quadrant="not-urgent-important">
                         <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <div class="quadrant-label">B. Важное не срочное</div>
-                            <h3>Не срочно, но важно</h3>
-                            <div class="quadrant-help">
-                                Текущие приоритетные задачи, на которых следует концентрироваться в первую очередь. Несвоевременное выполнение этих дел перемещает их в категорию «срочное и важное».
-                            </div>
+                            <h3>Запланировать</h3>
+                            <div class="quadrant-label">Важное, не срочное</div>
+                            <div class="quadrant-count" id="count-not-urgent-important">0 задач</div>
                         </div>
-                        <div class="quadrant-content" id="quadrant-not-urgent-important"></div>
+                        <div class="quadrant-content" id="quadrant-not-urgent-important">
+                            <div class="empty-state">Задач пока нет. Нажмите + чтобы добавить.</div>
+                        </div>
                     </div>
 
                     <!-- Квадрант D: Срочно, но Неважно -->
                     <div class="matrix-quadrant urgent-not-important" data-quadrant="urgent-not-important">
                         <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <div class="quadrant-label">D. Срочное не важное</div>
-                            <h3>Не важно, но срочно</h3>
-                            <div class="quadrant-help">
-                                Дела, которые снижают вашу продуктивность и мешают выполнению основной работы. Эти задачи можно полностью делегировать без ущерба для своей продуктивности.
-                            </div>
+                            <h3>Делегировать</h3>
+                            <div class="quadrant-label">Срочное, не важное</div>
+                            <div class="quadrant-count" id="count-urgent-not-important">0 задач</div>
                         </div>
-                        <div class="quadrant-content" id="quadrant-urgent-not-important"></div>
+                        <div class="quadrant-content" id="quadrant-urgent-not-important">
+                            <div class="empty-state">Задач пока нет. Нажмите + чтобы добавить.</div>
+                        </div>
                     </div>
 
                     <!-- Квадрант C: Не срочно и Неважно -->
                     <div class="matrix-quadrant not-urgent-not-important" data-quadrant="not-urgent-not-important">
                         <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <div class="quadrant-label">C. Не срочное не важное</div>
-                            <h3>Не важно и не срочно</h3>
-                            <div class="quadrant-help">
-                                Это список «пожирателей времени». Это задачи, которые не оказывают положительного влияния на основной вид деятельности. Их можно не выполнять.
-                            </div>
+                            <h3>Исключить</h3>
+                            <div class="quadrant-label">Не срочное, не важное</div>
+                            <div class="quadrant-count" id="count-not-urgent-not-important">0 задач</div>
                         </div>
-                        <div class="quadrant-content" id="quadrant-not-urgent-not-important"></div>
+                        <div class="quadrant-content" id="quadrant-not-urgent-not-important">
+                            <div class="empty-state">Задач пока нет. Нажмите + чтобы добавить.</div>
+                        </div>
                     </div>
                 </div>
             </div>

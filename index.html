@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#1c1c1e">
+    <meta name="theme-color" content="#ffffff">
     <title>Life Organizer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
@@ -13,41 +13,41 @@
 </head>
 <body>
     <div id="app">
-        <!-- Top Navigation Bar (iOS 5 style) -->
+        <!-- Top Navigation Bar -->
         <div class="navbar">
+            <button class="navbar-btn left" id="menuBtn">Меню</button>
             <div class="navbar-title">Life Organizer</div>
-            <button class="navbar-btn left" id="menuBtn">Menu</button>
-            <button class="navbar-btn right" id="syncBtn">Sync</button>
+            <button class="navbar-btn right" id="syncBtn">Синхронизация</button>
         </div>
 
         <!-- Side Menu -->
         <div class="menu" id="menu">
-            <div class="menu-header">Меню</div>
+            <div class="menu-header">Навигация</div>
             <div class="menu-items">
                 <div class="menu-item active" data-view="eisenhower">
-                    <span class="menu-icon"></span>
+                    <span class="menu-icon">■</span>
                     <span>Матрица Эйзенхауэра</span>
                 </div>
                 <div class="menu-item" data-view="kanban">
-                    <span class="menu-icon"></span>
+                    <span class="menu-icon">≡</span>
                     <span>Канбан-доски</span>
                 </div>
                 <div class="menu-item" data-view="habits">
-                    <span class="menu-icon">Check</span>
+                    <span class="menu-icon">✓</span>
                     <span>Трекер привычек</span>
                 </div>
                 <div class="menu-item" data-view="pomodoro">
-                    <span class="menu-icon"></span>
-                    <span>Pomodoro</span>
+                    <span class="menu-icon">◷</span>
+                    <span>Помодоро</span>
                 </div>
                 <div class="menu-item" data-view="settings">
-                    <span class="menu-icon"></span>
+                    <span class="menu-icon">⚙</span>
                     <span>Настройки</span>
                 </div>
             </div>
             <div class="menu-footer">
                 <div class="sync-status" id="syncStatus">
-                    <span class="sync-indicator"> </span>
+                    <span class="sync-indicator"></span>
                     <span class="sync-text">Не синхронизировано</span>
                 </div>
             </div>
@@ -58,31 +58,54 @@
             <!-- Eisenhower Matrix View -->
             <div class="view active" id="eisenhowerView">
                 <div class="eisenhower-matrix">
+                    <!-- Квадрант A: Срочно и Важно -->
                     <div class="matrix-quadrant urgent-important" data-quadrant="urgent-important">
+                        <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <h3>Срочно и Важно</h3>
-                            <button class="add-task-btn">+</button>
+                            <div class="quadrant-label">A. Срочное и важное</div>
+                            <h3>Важно и срочно</h3>
+                            <div class="quadrant-help">
+                                Дела, которые не терпят отлагательства. Регулярное появление таких дел в списке — показатель плохого планирования. При идеальном планировании этот квадрат должен быть пустым.
+                            </div>
                         </div>
                         <div class="quadrant-content" id="quadrant-urgent-important"></div>
                     </div>
+
+                    <!-- Квадрант B: Не срочно, но Важно -->
                     <div class="matrix-quadrant not-urgent-important" data-quadrant="not-urgent-important">
+                        <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <h3>Не срочно, но Важно</h3>
-                            <button class="add-task-btn">+</button>
+                            <div class="quadrant-label">B. Важное не срочное</div>
+                            <h3>Не срочно, но важно</h3>
+                            <div class="quadrant-help">
+                                Текущие приоритетные задачи, на которых следует концентрироваться в первую очередь. Несвоевременное выполнение этих дел перемещает их в категорию «срочное и важное».
+                            </div>
                         </div>
                         <div class="quadrant-content" id="quadrant-not-urgent-important"></div>
                     </div>
+
+                    <!-- Квадрант D: Срочно, но Неважно -->
                     <div class="matrix-quadrant urgent-not-important" data-quadrant="urgent-not-important">
+                        <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <h3>Срочно, но Неважно</h3>
-                            <button class="add-task-btn">+</button>
+                            <div class="quadrant-label">D. Срочное не важное</div>
+                            <h3>Не важно, но срочно</h3>
+                            <div class="quadrant-help">
+                                Дела, которые снижают вашу продуктивность и мешают выполнению основной работы. Эти задачи можно полностью делегировать без ущерба для своей продуктивности.
+                            </div>
                         </div>
                         <div class="quadrant-content" id="quadrant-urgent-not-important"></div>
                     </div>
+
+                    <!-- Квадрант C: Не срочно и Неважно -->
                     <div class="matrix-quadrant not-urgent-not-important" data-quadrant="not-urgent-not-important">
+                        <button class="add-task-btn" title="Добавить задачу">+</button>
                         <div class="quadrant-header">
-                            <h3>Не срочно и Неважно</h3>
-                            <button class="add-task-btn">+</button>
+                            <div class="quadrant-label">C. Не срочное не важное</div>
+                            <h3>Не важно и не срочно</h3>
+                            <div class="quadrant-help">
+                                Это список «пожирателей времени». Это задачи, которые не оказывают положительного влияния на основной вид деятельности. Их можно не выполнять.
+                            </div>
                         </div>
                         <div class="quadrant-content" id="quadrant-not-urgent-not-important"></div>
                     </div>
@@ -94,22 +117,22 @@
                 <div class="kanban-boards">
                     <div class="kanban-column" data-status="backlog">
                         <div class="column-header">
-                            <h3>Backlog</h3>
-                            <button class="add-task-btn">+</button>
+                            <h3>Очередь</h3>
+                            <button class="add-task-btn" title="Добавить задачу">+</button>
                         </div>
                         <div class="column-content" id="kanban-backlog"></div>
                     </div>
                     <div class="kanban-column" data-status="in-progress">
                         <div class="column-header">
-                            <h3>In Progress</h3>
-                            <button class="add-task-btn">+</button>
+                            <h3>В работе</h3>
+                            <button class="add-task-btn" title="Добавить задачу">+</button>
                         </div>
                         <div class="column-content" id="kanban-in-progress"></div>
                     </div>
                     <div class="kanban-column" data-status="done">
                         <div class="column-header">
-                            <h3>Done</h3>
-                            <button class="add-task-btn">+</button>
+                            <h3>Выполнено</h3>
+                            <button class="add-task-btn" title="Добавить задачу">+</button>
                         </div>
                         <div class="column-content" id="kanban-done"></div>
                     </div>
@@ -121,7 +144,7 @@
                 <div class="habits-container">
                     <div class="habits-header">
                         <h2>Мои привычки</h2>
-                        <button class="btn-primary" id="addHabitBtn">+ Добавить привычку</button>
+                        <button class="btn-primary" id="addHabitBtn">Добавить привычку</button>
                     </div>
                     <div class="habits-list" id="habitsList"></div>
                 </div>
@@ -162,13 +185,13 @@
                     <div class="settings-section">
                         <h3>Синхронизация</h3>
                         <button class="btn-primary" id="connectGoogleDrive">
-                            <span id="driveButtonText">🔗 Подключить Google Drive</span>
+                            <span id="driveButtonText">Подключить Google Drive</span>
                         </button>
                         <p class="settings-note">Ваши данные будут автоматически сохраняться в облаке</p>
                     </div>
 
                     <div class="settings-section">
-                        <h3>Pomodoro настройки</h3>
+                        <h3>Настройки Помодоро</h3>
                         <div class="setting-row">
                             <label>Время фокуса (мин)</label>
                             <input type="number" id="focusTime" value="25" min="1" max="60">
@@ -185,9 +208,23 @@
 
                     <div class="settings-section">
                         <h3>Данные</h3>
-                        <button class="btn-secondary" id="exportData">📥 Экспорт данных</button>
-                        <button class="btn-secondary" id="importData">📤 Импорт данных</button>
-                        <button class="btn-danger" id="clearData">🗑 Очистить все данные</button>
+                        <button class="btn-secondary" id="exportData">Экспорт данных</button>
+                        <button class="btn-secondary" id="importData">Импорт данных</button>
+                        <button class="btn-danger" id="clearData">Очистить все данные</button>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>О матрице Эйзенхауэра</h3>
+                        <p class="settings-note" style="margin-bottom: 12px;">
+                            Матрица Эйзенхауэра — метод управления временем, позволяющий расставить приоритеты в делах по критериям важности и срочности.
+                        </p>
+                        <p class="settings-note">
+                            <strong>Главный принцип:</strong> Распределите все задачи по четырем группам в зависимости от степени их важности и срочности. Чтобы определить критерии важности и срочности своих задач, нужно задать себе два вопроса:
+                        </p>
+                        <ul style="margin: 12px 0; padding-left: 20px; color: var(--text-secondary); font-size: 13px;">
+                            <li>Выполнение этой задачи необходимо для достижения моей ключевой цели? (Да — важно, нет — не важно.)</li>
+                            <li>Если задачу не выполнить сейчас, то она теряет свою актуальность? (Да — срочная, нет — не срочная.)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -210,20 +247,20 @@
                         <textarea id="taskDescription" class="input-field" rows="3" placeholder="Детали задачи..."></textarea>
                     </div>
                     <div class="form-group" id="quadrantGroup">
-                        <label>Квадрант</label>
+                        <label>Квадрант (Матрица Эйзенхауэра)</label>
                         <select id="taskQuadrant" class="input-field">
-                            <option value="urgent-important">Срочно и Важно</option>
-                            <option value="not-urgent-important">Не срочно, но Важно</option>
-                            <option value="urgent-not-important">Срочно, но Неважно</option>
-                            <option value="not-urgent-not-important">Не срочно и Неважно</option>
+                            <option value="urgent-important">A. Срочно и Важно</option>
+                            <option value="not-urgent-important">B. Не срочно, но Важно</option>
+                            <option value="urgent-not-important">D. Срочно, но Неважно</option>
+                            <option value="not-urgent-not-important">C. Не срочно и Неважно</option>
                         </select>
                     </div>
-                    <div class="form-group" id="statusGroup" style="display:none;">
-                        <label>Статус</label>
+                    <div class="form-group" id="statusGroup">
+                        <label>Статус (Канбан)</label>
                         <select id="taskStatus" class="input-field">
-                            <option value="backlog">Backlog</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="done">Done</option>
+                            <option value="backlog">Очередь</option>
+                            <option value="in-progress">В работе</option>
+                            <option value="done">Выполнено</option>
                         </select>
                     </div>
                 </div>

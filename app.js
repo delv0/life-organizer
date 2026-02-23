@@ -1,5 +1,4 @@
 // Life Organizer App - Main JavaScript
-console.log('✅ app.js загружен успешно');
 
 class LifeOrganizer {
     constructor() {
@@ -313,7 +312,7 @@ class LifeOrganizer {
             const container = document.getElementById(`quadrant-${quadrant}`);
             container.innerHTML = '';
             
-            const quadrantTasks = tasks.filter(t => t.type === 'eisenhower' && t.quadrant === quadrant);
+            const quadrantTasks = tasks.filter(t => t.quadrant === quadrant);
             quadrantTasks.forEach(task => {
                 container.appendChild(this.createTaskCard(task, 'eisenhower'));
             });
@@ -325,7 +324,7 @@ class LifeOrganizer {
             const container = document.getElementById(`kanban-${status}`);
             container.innerHTML = '';
             
-            const statusTasks = tasks.filter(t => t.type === 'kanban' && t.status === status);
+            const statusTasks = tasks.filter(t => t.status === status);
             statusTasks.forEach(task => {
                 container.appendChild(this.createTaskCard(task, 'kanban'));
             });
@@ -855,16 +854,8 @@ class LifeOrganizer {
 
 // Initialize app
 let app;
-console.log('🔄 Ожидание загрузки DOM...');
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ DOM загружен, инициализация приложения...');
-    try {
-        app = new LifeOrganizer();
-        console.log('✅ LifeOrganizer создан успешно');
-    } catch (error) {
-        console.error('❌ Ошибка при создании LifeOrganizer:', error);
-        alert('Ошибка инициализации приложения. Откройте консоль (F12) для подробностей.');
-    }
+    app = new LifeOrganizer();
     
     // Request notification permission
     if ('Notification' in window && Notification.permission === 'default') {
@@ -873,12 +864,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Service Worker registration for PWA
-if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
-    // Service Worker работает только через HTTP/HTTPS, не через file://
-    const swPath = window.location.pathname.includes('.html') 
-        ? './sw.js' 
-        : '/sw.js';
-    navigator.serviceWorker.register(swPath).catch(err => {
-        console.log('Service Worker registration failed (это нормально для file://):', err);
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(err => {
+        console.log('Service Worker registration failed:', err);
     });
 }

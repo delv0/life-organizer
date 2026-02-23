@@ -1,243 +1,181 @@
 # Life Organizer
 
-Modern web application for personal productivity with Eisenhower Matrix, Kanban boards, habit tracker, and Pomodoro timer.
+Современное веб-приложение для личной продуктивности с Матрицей Эйзенхауэра, Канбан-досками, трекером привычек и таймером Помодоро.
 
-## Features
+## Возможности
 
-- **Eisenhower Matrix** - Prioritize tasks by urgency and importance across 4 quadrants
-- **Kanban Boards** - Visual workflow management: Backlog, In Progress, Done
-- **Habit Tracker** - Daily habit monitoring with streak counting
-- **Pomodoro Timer** - Time management with 25/5 minute intervals
-- **Drag and Drop** - Move tasks between lists and quadrants
-- **Resizable Lists** - Adjust height and width like in graphic editors
-- **Offline Support** - All data stored locally in browser
-- **Data Sync** - Export/import via JSON files
-- **Responsive Design** - Works on desktop and mobile devices
+- **Матрица Эйзенхауэра** - Приоритизация задач по срочности и важности в 4 квадрантах
+- **Канбан-доски** - Визуальное управление рабочим процессом: Очередь, В работе, Выполнено
+- **Трекер привычек** - Ежедневный мониторинг привычек со счетчиком streak
+- **Таймер Помодоро** - Управление временем с интервалами 25/5 минут
+- **Drag and Drop** - Перетаскивание задач между списками и квадрантами
+- **Работа оффлайн** - Все данные хранятся локально в браузере
+- **Синхронизация данных** - Экспорт/импорт через JSON файлы
+- **Адаптивный дизайн** - Работает на компьютере и мобильных устройствах
 
-## Quick Start
+## Быстрый старт
 
-### Desktop
+### Компьютер
 
-**Simple method:**
-1. Open `index.html` in your browser
-2. Press Ctrl + F5 to clear cache if needed
+**Простой способ:**
+1. Откройте `index.html` в браузере
+2. При необходимости нажмите Ctrl + F5 для очистки кэша
 
-**With local server (recommended):**
+**Через локальный сервер (рекомендуется):**
 ```bash
 python -m http.server 8000
 ```
-Then open: http://localhost:8000
+Затем откройте: http://localhost:8000
 
-### Mobile
+### Телефон
 
-**Method 1: Local Server**
+**Способ 1: Локальный сервер**
 
-On your computer:
-1. Run: `python -m http.server 8000`
-2. Find your IP address: `ipconfig` (Windows) or `ifconfig` (Mac/Linux)
-   Example: 192.168.1.100
+На компьютере:
+1. Запустите: `python -m http.server 8000`
+2. Узнайте IP адрес: `ipconfig` (Windows) или `ifconfig` (Mac/Linux)
+   Например: 192.168.1.100
 
-On your phone:
-1. Connect to the same WiFi network
-2. Open browser and navigate to: http://192.168.1.100:8000
+На телефоне:
+1. Подключитесь к той же WiFi сети
+2. Откройте браузер и перейдите: http://192.168.1.100:8000
 
-**Install as app:**
-- Android: Menu > Install app
-- iOS: Safari > Share > Add to Home Screen
+**Установить как приложение:**
+- Android: Меню > Установить приложение
+- iOS: Safari > Поделиться > На экран «Домой»
 
-**Method 2: Copy Files**
+## Использование
 
-Transfer the entire folder to your phone via USB or cloud storage, then open `index.html` in mobile browser.
+### Матрица Эйзенхауэра
 
-## Usage
+Задачи распределяются по 4 квадрантам:
 
-### Eisenhower Matrix
+1. **A. Важно и срочно** - Делайте немедленно (красный фон)
+2. **B. Важно, но не срочно** - Планируйте и выполняйте (синий фон)
+3. **D. Срочно, но не важно** - Делегируйте (желтый фон)
+4. **C. Не важно и не срочно** - Исключайте (серый фон)
 
-Tasks are organized into 4 quadrants:
+**Подсказки в каждом квадранте** помогут правильно распределить задачи.
 
-1. **Urgent and Important** - Do immediately (red border)
-2. **Not Urgent but Important** - Schedule and plan (blue border)
-3. **Urgent but Not Important** - Delegate if possible (yellow border)
-4. **Not Urgent and Not Important** - Eliminate (gray border)
+### Канбан-доска
 
-### Kanban Board
-
-Three columns for workflow:
-- **Backlog** - Tasks waiting to be started
-- **In Progress** - Currently active work (limit to 3-5 items)
-- **Done** - Completed tasks
+Три колонки для рабочего процесса:
+- **Очередь** - Задачи, ожидающие начала работы
+- **В работе** - Текущая активная работа (ограничьте 3-5 задачами)
+- **Выполнено** - Завершенные задачи
 
 ### Drag and Drop
 
-Click and hold any task, then drag it to another quadrant or column to move it.
+Нажмите и удерживайте любую задачу, затем перетащите её в другой квадрант или колонку для перемещения.
 
-### Resizing Lists
+### Трекер привычек
 
-- **Matrix quadrants**: Hover over bottom edge, cursor changes to vertical arrows, drag to resize
-- **Kanban columns**: Hover over bottom-right corner, cursor changes to diagonal arrows, drag to resize
+1. Создайте привычку с целью (например, 30 дней)
+2. Отмечайте выполнение каждый день
+3. Следите за своей полосой (streak) и прогресс-баром
+4. Просматривайте процент выполнения
 
-### Habit Tracking
+### Таймер Помодоро
 
-1. Create a habit with a goal (e.g., 30 days)
-2. Check off each day you complete it
-3. Track your streak and progress bar
-4. View your completion percentage
+1. Установите время фокуса (по умолчанию: 25 минут)
+2. Нажмите Старт для начала сессии
+3. Сделайте короткий перерыв (5 минут) после окончания таймера
+4. Сделайте длинный перерыв (15 минут) после 4 помодоро
 
-### Pomodoro Timer
+## Синхронизация данных
 
-1. Set focus time (default: 25 minutes)
-2. Click Start to begin session
-3. Take a short break (5 minutes) after timer ends
-4. Take a long break (15 minutes) after 4 pomodoros
+### Экспорт данных
 
-## Data Synchronization
+Настройки > Экспорт данных > Сохраните JSON файл в облачное хранилище
 
-### Export Data
+### Импорт данных
 
-Settings > Export Data > Save JSON file to cloud storage
+На другом устройстве: Настройки > Импорт данных > Выберите сохраненный JSON файл
 
-### Import Data
+Все задачи, привычки и настройки будут перенесены.
 
-On another device: Settings > Import Data > Select saved JSON file
+## Инструмент импорта задач
 
-All tasks, habits, and settings will be transferred.
+Используйте `convert-tasks.html` для импорта рабочих журналов:
 
-## Task Import Tool
+1. Откройте конвертер в браузере
+2. Вставьте JSON массив: `[{"дата": "...", "место": "...", "действие": "..."}]`
+3. Конвертировать > Скачать JSON
+4. В приложении: Настройки > Импорт данных
 
-Use `convert-tasks.html` to import work logs:
+Задачи будут автоматически распределены по соответствующим квадрантам.
 
-1. Open the converter in browser
-2. Paste JSON array: `[{"date": "...", "location": "...", "action": "..."}]`
-3. Click Convert > Download JSON
-4. In app: Settings > Import Data
+## Хранение данных
 
-Tasks will be automatically categorized into appropriate quadrants based on type.
+- Все данные хранятся локально в IndexedDB браузера
+- Данные не отправляются на внешние серверы
+- Данные сохраняются даже после очистки кэша браузера
+- Рекомендуется регулярный экспорт для резервного копирования
 
-## Data Storage
+## Настройки
 
-- All data stored locally in browser IndexedDB
-- No data sent to external servers
-- Data persists even after clearing browser cache
-- Regular exports recommended for backup
+### Конфигурация Помодоро
+- Время фокуса (по умолчанию: 25 минут)
+- Короткий перерыв (по умолчанию: 5 минут)
+- Длинный перерыв (по умолчанию: 15 минут)
 
-## Settings
+## Решение проблем
 
-### Pomodoro Configuration
-- Focus time (default: 25 minutes)
-- Short break (default: 5 minutes)
-- Long break (default: 15 minutes)
+### Изменения CSS не применяются
+- Нажмите Ctrl + F5 для принудительной перезагрузки
 
-### List Display
-- Each list shows approximately 5 tasks
-- Scroll to view more tasks
-- Resize lists by dragging edges
+### Данные не сохраняются
+- Проверьте, что режим инкогнито не включен
+- Убедитесь, что браузер поддерживает IndexedDB
 
-## Troubleshooting
+### Приложение не устанавливается на телефон
+- Убедитесь, что используете HTTPS или localhost
+- Проверьте, что сервер запущен
 
-### CSS changes not applying
-- Press Ctrl + F5 to force refresh
-- Or open in incognito mode (Ctrl + Shift + N)
+### Drag and drop не работает
+- Работает лучше всего с мышью на компьютере
+- Попробуйте другой браузер (рекомендуется Chrome)
 
-### Data not saving
-- Check that incognito mode is not enabled
-- Verify browser supports IndexedDB (all modern browsers)
+### Проблемы с доступом на телефоне
+- Убедитесь, что телефон и компьютер в одной WiFi сети
+- Проверьте правильность IP адреса
+- При необходимости временно отключите firewall
 
-### App won't install on mobile
-- Ensure using HTTPS or localhost
-- Verify server is running if using local server method
+## Приватность
 
-### Drag and drop not working
-- Works best with mouse on desktop
-- Try different browser (Chrome recommended)
+- Не требуется регистрация аккаунта
+- Все данные хранятся только на вашем устройстве
+- Нет передачи данных на внешние серверы
+- Нет аналитики или отслеживания
+- Полное владение данными
 
-### Mobile access issues
-- Verify phone and computer on same WiFi network
-- Check IP address is correct
-- Temporarily disable firewall if needed
-
-## Privacy
-
-- No account registration required
-- All data stored only on your device
-- No external data transmission
-- No analytics or tracking
-- Complete data ownership
-
-## File Structure
+## Структура файлов
 
 ```
 life-organizer/
-├── index.html          # Main application page
-├── styles.css          # Modern minimalist styles
-├── app.js              # Application logic with drag & drop
-├── sw.js               # Service worker for PWA
-├── manifest.json       # PWA manifest
-├── icon-192.png        # App icon 192x192
-├── icon-512.png        # App icon 512x512
-├── convert-tasks.html  # Work log import converter
-└── README.md           # This file
+├── index.html          # Главная страница приложения
+├── styles.css          # Современные минималистичные стили
+├── app.js              # Логика приложения с drag & drop
+├── sw.js               # Service worker для PWA
+├── manifest.json       # PWA манифест
+├── icon-192.png        # Иконка приложения 192x192
+├── icon-512.png        # Иконка приложения 512x512
+└── README.md           # Этот файл
 ```
 
-## Keyboard Shortcuts
+## Версия
 
-- Ctrl + F5 - Force reload (clear cache)
-- Ctrl + Shift + N - Open incognito window
+3.0 - Матрица 2x2 с подсказками
 
-## Best Practices
+## Лицензия
 
-### For Eisenhower Matrix
-- Spend 80% of time in "Not Urgent but Important" quadrant
-- Minimize "Urgent and Important" through better planning
-- Delegate or automate "Urgent but Not Important" tasks
-- Eliminate "Not Urgent and Not Important" items
+Бесплатно для личного использования
 
-### For Kanban
-- Limit work in progress to 3-5 items
-- Focus on completing tasks rather than starting new ones
-- Move items to Done immediately upon completion
-- Regular review and prioritization of Backlog
+## Начало работы
 
-### For Habits
-- Start with 1-3 habits maximum
-- Link new habits to existing routines
-- Never skip two days in a row
-- Mark habit immediately after completion
+1. Откройте приложение
+2. Создайте свою первую задачу в Матрице Эйзенхауэра
+3. Добавьте привычку, которую хотите развить
+4. Запустите сессию Помодоро и начните работать
 
-### For Pomodoro
-- Plan tasks before starting work sessions
-- No distractions during focus time
-- Stand and move during breaks
-- Take long breaks seriously after 4 sessions
-
-## Technical Details
-
-- Built with vanilla JavaScript (no frameworks)
-- IndexedDB for local data persistence
-- PWA capabilities for offline use
-- Service Worker for caching
-- Responsive CSS Grid and Flexbox layout
-- Modern CSS variables for theming
-
-## Browser Support
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Opera 76+
-
-## Version
-
-2.0 - Modern Design Edition
-
-## License
-
-Free for personal use
-
-## Getting Started
-
-1. Open the application
-2. Create your first task in Eisenhower Matrix
-3. Add a habit you want to build
-4. Start a Pomodoro session and begin working
-
-Stay organized and work efficiently.
+Оставайтесь организованными и работайте эффективно.

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест загрузки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Диагностика Life Organizer</h1>
+    
+    <div id="results"></div>
+    
+    <button onclick="runTests()">Запустить проверку</button>
+    <button onclick="openApp()">Открыть приложение</button>
+
+    <script>
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = 'status ' + type;
+            div.textContent = message;
+            document.getElementById('results').appendChild(div);
+        }
+
+        function runTests() {
+            document.getElementById('results').innerHTML = '';
+            
+            log('Начало проверки...', 'info');
+            
+            // Проверка 1: Загрузка файлов
+            fetch('app.js')
+                .then(response => {
+                    if (response.ok) {
+                        log('✅ app.js найден и доступен', 'success');
+                        return fetch('styles.css');
+                    } else {
+                        throw new Error('app.js не найден');
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        log('✅ styles.css найден и доступен', 'success');
+                    } else {
+                        throw new Error('styles.css не найден');
+                    }
+                })
+                .catch(err => {
+                    log('❌ Ошибка загрузки файлов: ' + err.message, 'error');
+                    log('💡 Убедитесь что все файлы в одной папке', 'info');
+                });
+
+            // Проверка 2: IndexedDB
+            if ('indexedDB' in window) {
+                log('✅ IndexedDB поддерживается', 'success');
+            } else {
+                log('❌ IndexedDB НЕ поддерживается', 'error');
+            }
+
+            // Проверка 3: LocalStorage
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                log('✅ LocalStorage работает', 'success');
+            } catch (e) {
+                log('❌ LocalStorage НЕ работает (возможно приватный режим)', 'error');
+            }
+
+            // Проверка 4: Service Worker
+            if ('serviceWorker' in navigator) {
+                log('✅ Service Worker поддерживается', 'success');
+            } else {
+                log('⚠️ Service Worker НЕ поддерживается (нужен HTTPS)', 'info');
+            }
+
+            // Проверка 5: Браузер
+            log('ℹ️ User Agent: ' + navigator.userAgent, 'info');
+            
+            // Проверка 6: Протокол
+            log('ℹ️ Протокол: ' + window.location.protocol, 'info');
+            if (window.location.protocol === 'file:') {
+                log('⚠️ Открыто через file:// - запустите через сервер для лучшей работы', 'info');
+            }
+        }
+
+        function openApp() {
+            window.location.href = 'index.html';
+        }
+
+        // Автозапуск при загрузке
+        window.addEventListener('load', () => {
+            setTimeout(runTests, 500);
+        });
+    </script>
+</body>
+</html>
